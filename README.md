@@ -37,7 +37,6 @@ Todo lo editable está en `src/data/`, sin tocar JSX:
 
 ## Pendientes antes de publicar: buscá `[corchetes]`
 
-- **WhatsApp** `[NÚMERO]`: `src/data/site.js` (`phoneDisplay` y `whatsappNumber`, formato `549` + característica sin 0 + número sin 15, ej. `5491123456789`) y `telephone` en el JSON-LD de `index.html`, además del `<noscript>`.
 - **Instagram** `[@USUARIO]`: `site.js` (`instagram`, `instagramUrl`) y `sameAs` en `index.html`.
 - **Horarios**: `site.js` (`schedule`) y `openingHoursSpecification` en `index.html`. Después de confirmarlos, borrá el texto `[Confirmar horarios]` en `Contact.jsx`.
 - **Fotos** `[Foto: ...]`: ver abajo.
@@ -47,7 +46,7 @@ Todo lo editable está en `src/data/`, sin tocar JSX:
 - **Dominio**: hoy dice `https://motosgutierrez.vercel.app` en `index.html`, `public/robots.txt`, `public/sitemap.xml` y `site.js`.
 - **Mapa**: se arma solo con la dirección. Cuando el taller esté en Google Maps, se puede pegar el embed oficial en `Contact.jsx`.
 
-La zona y la dirección ya están cargadas con los mismos datos de Lo de Dani (Camino Real Norte 1824, Gutiérrez, Berazategui).
+La zona y la dirección ya están cargadas con los mismos datos de Lo de Dani (Camino Real Norte 1824, Gutiérrez, Berazategui). El WhatsApp es el +54 9 2229 43-9544; si cambia, editalo en `src/data/site.js` (`phoneDisplay` y `whatsappNumber`, formato `549` + característica sin 0 + número sin 15) y en `telephone` del JSON-LD y el `<noscript>` de `index.html`.
 
 ## Cómo poner las fotos reales
 

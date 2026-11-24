@@ -52,7 +52,7 @@ export default function Nav() {
           aria-label="Principal"
           className="mx-auto max-w-[1360px] h-16 md:h-20 px-4 md:px-10 flex items-center justify-between gap-4"
         >
-          <a href="#main" aria-label="Motos Gutiérrez, ir al inicio" className="shrink-0">
+          <a href="#main" aria-label="Motos Gutiérrez, ir al inicio" className="shrink-0 inline-flex items-center min-h-11">
             <Logo />
           </a>
 

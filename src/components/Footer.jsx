@@ -1,6 +1,7 @@
 import { site } from '../data/site.js';
 import { whatsappLink } from '../lib/whatsapp.js';
 import { track } from '../lib/track.js';
+import { mapsSearchUrl } from '../lib/maps.js';
 import Logo from './Logo.jsx';
 import { NAV_LINKS } from './Nav.jsx';
 import { InstagramIcon, PinIcon, WhatsAppIcon } from './icons.jsx';
@@ -24,7 +25,7 @@ export default function Footer() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="inline-flex min-h-10 items-center font-display text-lg font-semibold uppercase tracking-wide text-white/85 hover:text-amarillo transition-colors"
+                  className="inline-flex min-h-11 items-center font-display text-lg font-semibold uppercase tracking-wide text-white/85 hover:text-amarillo transition-colors"
                 >
                   {link.label}
                 </a>
@@ -42,7 +43,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => track('click_instagram')}
-                className="inline-flex items-center gap-2.5 min-h-10 hover:text-amarillo transition-colors"
+                className="inline-flex items-center gap-2.5 min-h-11 hover:text-amarillo transition-colors"
               >
                 <InstagramIcon className="w-5 h-5 shrink-0" />
                 {site.instagram}
@@ -54,19 +55,27 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => track('click_whatsapp', { origin: 'footer' })}
-                className="inline-flex items-center gap-2.5 min-h-10 hover:text-amarillo transition-colors"
+                className="inline-flex items-center gap-2.5 min-h-11 hover:text-amarillo transition-colors"
               >
                 <WhatsAppIcon className="w-5 h-5 shrink-0" />
                 {site.phoneDisplay}
               </a>
             </li>
-            <li className="flex items-start gap-2.5">
-              <PinIcon className="w-5 h-5 shrink-0 mt-0.5" />
-              <span>
-                {site.address.street}
-                <br />
-                {site.address.locality}
-              </span>
+            <li>
+              <a
+                href={mapsSearchUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => track('click_mapa', { origin: 'footer' })}
+                className="inline-flex items-start gap-2.5 min-h-11 py-1 hover:text-amarillo transition-colors"
+              >
+                <PinIcon className="w-5 h-5 shrink-0 mt-0.5" />
+                <span>
+                  {site.address.street}
+                  <br />
+                  {site.address.locality}
+                </span>
+              </a>
             </li>
           </ul>
         </div>

@@ -8,7 +8,7 @@ export const site = {
   domain: 'https://motosgutierrez.vercel.app', // [DOMINIO] Cambiar por el dominio propio cuando se compre
 
   // Zona y dirección: las mismas que Lo de Dani
-  zone: 'J. M. Gutiérrez', // aparece en el título principal
+  zone: 'J. M. Gutiérrez', // aparece en el título principal (  = espacio que no se corta)
   locality: 'Gutiérrez, Berazategui',
   address: {
     street: 'Camino Real Norte 1824',
@@ -17,8 +17,8 @@ export const site = {
     country: 'AR',
   },
 
-  phoneDisplay: '[11 XXXX-XXXX]', // [NÚMERO] como se lee en la página
-  whatsappNumber: '549XXXXXXXXXX', // [NÚMERO] formato wa.me: 549 + característica sin 0 + número sin 15
+  phoneDisplay: '2229 43-9544', // como se lee en la página
+  whatsappNumber: '5492229439544', // formato wa.me: 549 + característica sin 0 + número sin 15
   whatsappBaseMessage: 'Hola, quiero pedir turno para mi moto',
 
   instagram: '[@usuario]', // [@USUARIO]

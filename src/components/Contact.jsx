@@ -1,20 +1,11 @@
 import { site } from '../data/site.js';
 import { whatsappLink } from '../lib/whatsapp.js';
 import { track } from '../lib/track.js';
+import { mapsSearchUrl, mapsEmbedUrl } from '../lib/maps.js';
 import SectionHeading from './SectionHeading.jsx';
 import Reveal from './Reveal.jsx';
 import WhatsAppButton from './WhatsAppButton.jsx';
 import { WhatsAppIcon, ClockIcon, PinIcon, InstagramIcon } from './icons.jsx';
-
-const fullAddress = `${site.address.street}, ${site.address.locality}, ${site.address.region}`;
-
-const mapsSearchUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress)}`;
-
-// [MAPA] Cuando el taller esté cargado en Google Maps, se puede reemplazar por el
-// embed oficial (Google Maps → Compartir → Insertar un mapa).
-const mapsEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(
-  `${fullAddress}, ${site.address.country}`
-)}&output=embed`;
 
 function Box({ icon: Icon, title, children, delay }) {
   return (
