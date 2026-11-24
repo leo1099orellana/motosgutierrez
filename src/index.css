@@ -1,0 +1,223 @@
+@import "tailwindcss";
+
+/* Fuentes self-hosted (subset latin) — ver public/assets/fonts */
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/assets/fonts/barlow-condensed-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/assets/fonts/barlow-condensed-700.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/assets/fonts/barlow-condensed-800.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/inter-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/assets/fonts/inter-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/assets/fonts/inter-600.woff2") format("woff2");
+}
+
+@theme {
+  --color-carbon: #141414;
+  --color-carbon-2: #1c1c1c;
+  --color-carbon-3: #262626;
+  --color-negro: #0c0c0c;
+  --color-hueso: #f2efe8;
+  --color-hueso-2: #e6e2d8;
+  --color-blanco: #fbfaf7;
+  --color-amarillo: #ffd400;
+  --color-humo: #a3a3a3; /* texto secundario sobre oscuro */
+  --color-acero: #5a5852; /* texto secundario sobre claro */
+
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4.5rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-carbon);
+    color: var(--color-carbon);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Las animaciones laterales nunca agrandan el ancho de la página en el celular */
+  main,
+  footer {
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.005em;
+  }
+
+  ::selection {
+    background-color: var(--color-amarillo);
+    color: var(--color-carbon);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-amarillo);
+    outline-offset: 3px;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 100;
+    background-color: var(--color-amarillo);
+    color: var(--color-carbon);
+    padding: 0.75rem 1.25rem;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  .skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+  }
+
+  /* Subrayado tipo marcador para la palabra destacada de un título sobre fondo claro */
+  .marker {
+    background-image: linear-gradient(
+      transparent 60%,
+      var(--color-amarillo) 60%,
+      var(--color-amarillo) 88%,
+      transparent 88%
+    );
+    padding: 0 0.08em;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  /* Textura de placeholder: rayas diagonales finas, tipo chapa */
+  .stripes-dark {
+    background-color: var(--color-carbon-2);
+    background-image: repeating-linear-gradient(
+      135deg,
+      rgb(255 255 255 / 3.5%) 0 1px,
+      transparent 1px 14px
+    );
+  }
+  .stripes-darker {
+    background-color: #191919;
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgb(255 255 255 / 3%) 0 1px,
+      transparent 1px 10px
+    );
+  }
+  .stripes-light {
+    background-color: var(--color-hueso-2);
+    background-image: repeating-linear-gradient(
+      135deg,
+      rgb(20 20 20 / 5%) 0 1px,
+      transparent 1px 14px
+    );
+  }
+
+  /* Animaciones de scroll. Solo se esconden si hay JS (clase .js en <html>). */
+  .js .reveal {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+    transition:
+      opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+      transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  /* Deslizar desde el costado solo en pantallas anchas; en celular entra de abajo */
+  @media (min-width: 768px) {
+    .js .reveal[data-dir="left"] {
+      transform: translate3d(-36px, 0, 0);
+    }
+    .js .reveal[data-dir="right"] {
+      transform: translate3d(36px, 0, 0);
+    }
+  }
+  .js .reveal[data-dir="fade"] {
+    transform: none;
+  }
+  .js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .js .reveal {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* Entrada del hero, sin esperar al scroll */
+  @keyframes hero-in {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 24px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  .hero-in {
+    animation: hero-in 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: var(--reveal-delay, 0ms);
+  }
+}

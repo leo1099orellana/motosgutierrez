@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#141414" />
+
+    <!-- Marca que hay JavaScript (activa las animaciones de scroll) y abre siempre arriba
+         al volver a entrar. Si el JS de la página no llega a cargar, a los 3 s se
+         muestra todo igual para que nunca quede contenido escondido. -->
+    <script>
+      (function () {
+        var root = document.documentElement;
+        root.classList.add('js');
+        setTimeout(function () {
+          if (!window.__revealReady) root.classList.remove('js');
+        }, 3000);
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        var nav = performance.getEntriesByType && performance.getEntriesByType('navigation')[0];
+        if (location.hash && nav && nav.type !== 'navigate') {
+          history.replaceState(null, '', location.pathname + location.search);
+        }
+        window.addEventListener('pageshow', function (e) {
+          if (!e.persisted) return;
+          if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+          window.scrollTo({ top: 0, behavior: 'instant' });
+        });
+      })();
+    </script>
+
+    <title>Motos Gutiérrez | Service y reparación de motos en J. M. Gutiérrez</title>
+    <meta
+      name="description"
+      content="Service, reparación mecánica y eléctrica y limpieza de motos en J. M. Gutiérrez, Berazategui. Presupuesto sin cargo. Pedí tu turno por WhatsApp."
+    />
+    <!-- [DOMINIO] reemplazar motosgutierrez.vercel.app en todo este archivo -->
+    <link rel="canonical" href="https://motosgutierrez.vercel.app/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:site_name" content="Motos Gutiérrez" />
+    <meta property="og:title" content="Motos Gutiérrez | Service y reparación de motos en J. M. Gutiérrez" />
+    <meta
+      property="og:description"
+      content="Service, reparación y limpieza de motos en J. M. Gutiérrez, Berazategui. Presupuesto sin cargo. Pedí tu turno por WhatsApp."
+    />
+    <meta property="og:url" content="https://motosgutierrez.vercel.app/" />
+    <meta property="og:image" content="https://motosgutierrez.vercel.app/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Motos Gutiérrez | Service y reparación de motos en J. M. Gutiérrez" />
+    <meta
+      name="twitter:description"
+      content="Service, reparación y limpieza de motos en J. M. Gutiérrez. Pedí tu turno por WhatsApp."
+    />
+    <meta name="twitter:image" content="https://motosgutierrez.vercel.app/og-image.jpg" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-48x48.png" type="image/png" sizes="48x48" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Preload solo de las fuentes que se ven arriba del pliegue -->
+    <link rel="preload" href="/assets/fonts/barlow-condensed-800.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- [NÚMERO], [@USUARIO] y [HORARIOS]: completar también acá -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "MotorcycleRepair",
+        "name": "Motos Gutiérrez",
+        "description": "Service, reparación mecánica y eléctrica y limpieza de motos.",
+        "telephone": "+549XXXXXXXXXX",
+        "url": "https://motosgutierrez.vercel.app/",
+        "image": "https://motosgutierrez.vercel.app/og-image.jpg",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Camino Real Norte 1824",
+          "addressLocality": "Gutiérrez, Berazategui",
+          "addressRegion": "Buenos Aires",
+          "addressCountry": "AR"
+        },
+        "areaServed": ["Juan María Gutiérrez", "Berazategui"],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "18:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Saturday"],
+            "opens": "09:00",
+            "closes": "14:00"
+          }
+        ],
+        "sameAs": ["https://www.instagram.com/"]
+      }
+    </script>
+
+    <!-- Si después se suma un Meta Pixel, pegar acá el código oficial:
+         los clics a WhatsApp ya se mandan como evento Contact (src/lib/track.js). -->
+  </head>
+  <body>
+    <noscript>
+      <p><strong>Motos Gutiérrez — Service y reparación de motos en J. M. Gutiérrez, Berazategui</strong></p>
+      <p>Service, reparación mecánica y eléctrica, limpieza y detailing.</p>
+      <p>WhatsApp: [11 XXXX-XXXX]</p>
+      <p>Lunes a viernes de 9 a 18 h. Sábados de 9 a 14 h.</p>
+      <p>Camino Real Norte 1824, Gutiérrez, Berazategui.</p>
+    </noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
